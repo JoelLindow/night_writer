@@ -25,6 +25,7 @@ class NightWriter
 
   def braile_to_three_line
     braille_code.each do |braille_letter|
+    end
   end
 
 end
