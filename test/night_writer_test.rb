@@ -18,14 +18,16 @@ class NightWriterTest < Minitest::Test
   def test_it_can_convert_a_single_lowercase_letter_to_braille
     write = NightWriter.new("a")
     assert_equal ["[0.], [..], [..]"], write.braille_code
-    # binding.pry
+
     write_two = NightWriter.new("b")
     assert_equal ["[0.], [0.], [..]"], write_two.braille_code
   end
 
   def test_it_can_convert_a_string_of_multiple_letters
     write = NightWriter.new("abc")
+
     assert_equal ["[0.], [..], [..]", "[0.], [0.], [..]", "[00], [..], [..]"], write.braille_code
+
   end
 
 

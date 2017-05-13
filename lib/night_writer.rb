@@ -7,6 +7,7 @@ class NightWriter
   def initialize( text_in = read_file)
     @text_in = text_in
     @braille_code = translate_to_braille_code
+
   end
 
   def read_file
@@ -23,7 +24,7 @@ class NightWriter
   end
 
   def braile_to_three_line
-
+    braille_code.each do |braille_letter|
   end
 
 end
