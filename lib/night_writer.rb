@@ -1,7 +1,7 @@
 require './lib/braille_library'
 require 'pry'
 
-class NightWrite
+class NightWriter
   attr_reader :text_in
 
   def initialize(text_in = read_file)
