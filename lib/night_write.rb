@@ -1,8 +1,8 @@
+require './braille_library'
 require 'pry'
 
 class NightWrite
   attr_reader :text_in
-  braille_map = {"a" => "o....."}
 
   def initialize(text_in = read_file)
     @text_in = text_in
@@ -14,12 +14,12 @@ class NightWrite
   end
 
   def translate
-    ["o.....","o.....","o....."]
+    new_braille = []
+    braille_key = BrailleLibrary.new
+    new_braille << braille_key.braille[text_in]
+  end
+
+  def braile_map(letter)
+    braille_map = {"a" => "o....."}
   end
 end
-
-
-
-#
-# binding.pry
-# ""

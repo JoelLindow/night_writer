@@ -15,8 +15,8 @@ class NightWriteTest < Minitest::Test
     assert_equal "banana", write.text_in
   end
 
-  def test_it_can_convert_string_to_braile
-    write = NightWrite.new("aaa")
-    assert_equal ["o.....","o.....","o....."], write.translate
+  def test_it_can_convert_a_single_letter_to_braile
+    write = NightWrite.new("a")
+    assert_equal ["o....."], write.translate
   end
 end
