@@ -25,11 +25,13 @@ class NightWriter
 
   def braile_to_three_line
     braille_code.each do |braille_letter|
+      puts braille_letter[1]
+      puts braille_letter[2]
+      puts braille_letter[3]
     end
   end
 
 end
-#
-# input = gets.chomp
-# nw = NightWriter.new(input)
-# puts nw.braille_code.to_s
+
+input = gets.chomp
+nw = NightWriter.new(input)
