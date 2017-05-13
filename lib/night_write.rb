@@ -1,4 +1,4 @@
-require './braille_library'
+require './lib/braille_library'
 require 'pry'
 
 class NightWrite
@@ -17,9 +17,8 @@ class NightWrite
     new_braille = []
     braille_key = BrailleLibrary.new
     new_braille << braille_key.braille[text_in]
+    #add code to split up characters
+    new_braille
   end
 
-  def braile_map(letter)
-    braille_map = {"a" => "o....."}
-  end
 end
