@@ -1,7 +1,7 @@
 require './lib/braille_library'
 require 'pry'
 
-class NightWriter
+class Translate
   attr_reader :text_in, :braille_code
 
   def initialize(text_in = read_file)
@@ -60,7 +60,7 @@ class NightWriter
 end
 
 # file = File.read(ARGV[0]).chomp
-# nw = NightWriter.new(file)
+# nw = Translate.new(file)
 # nw.convert
 # p nw.line_one
 # p nw.line_two
