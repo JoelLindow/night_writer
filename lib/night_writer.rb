@@ -30,7 +30,6 @@ class NightWriter
       line_one << braille_letter[0]
       line_two << braille_letter[1]
       line_three << braille_letter[2]
-      # binding.pry
     end
   end
 
