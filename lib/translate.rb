@@ -3,6 +3,7 @@ require 'pry'
 
 class Translate
   attr_reader :text_in, :braille_code
+  attr_accessor :text_out
 
   def initialize(text_in = read_file)
     @text_in = text_in
@@ -13,9 +14,11 @@ class Translate
       line_one
       line_two
       line_three
+      write_text_to_file
   end
 
   def read_file
+    #this is just topass tests.
     f = File.read(ARGV[0]).chomp
   end
 
@@ -54,7 +57,8 @@ class Translate
 
 
   def write_text_to_file
-    File.open()
+    dummy_output = "DUMMY TEXT MAGIC"
+    File.open('./output.txt', 'w+') { |file| file.write(dummy_output) }
   end
 
 end
