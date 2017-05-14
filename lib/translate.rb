@@ -8,6 +8,7 @@ class Translate
   def initialize(text_in = read_file)
     @text_in = text_in
     @braille_code = translate_to_braille_code
+    @text_out = nil
   end
 
   def convert
@@ -57,8 +58,10 @@ class Translate
 
 
   def write_text_to_file
-    dummy_output = "DUMMY TEXT MAGIC"
-    File.open('./output.txt', 'w+') { |file| file.write(dummy_output) }
+    for_file = line_one + "\n" + line_two + "\n" + line_three
+    # dummy_output = "DUMMY TEXT MAGIC"
+    # File.open('braille.txt', 'w+') { |file| file.write(line_one + "\n") }
+    # File.open('text_out', 'w+') { |file| file.write(line_one) }
   end
 
 end
