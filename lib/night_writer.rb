@@ -40,8 +40,8 @@ class NightWriter
 
 end
 
-# input = gets.chomp
-# nw = NightWriter.new(input)
+# file = File.read(ARGV[0]).chomp
+# nw = NightWriter.new(file)
 # nw.braile_to_three_line
 # p nw.line_one
 # p nw.line_two
