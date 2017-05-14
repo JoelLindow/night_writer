@@ -30,11 +30,47 @@ class NightWriterTest < Minitest::Test
 
   def test_it_can_break_braile_into_three_lines
     write = NightWriter.new("abcde")
-    write.braile_to_three_line
+    write.convert
 
     assert_equal "0.0.00000.", write.line_one
     assert_equal "..0....0.0", write.line_two
     assert_equal "..........", write.line_three
+  end
+
+  def test_it_can_use_capital_letters
+    write = NightWriter.new("ABCDE")
+    write.convert
+
+    assert_equal "..0...0...00..00..0.", write.line_one
+    assert_equal "......0........0...0", write.line_two
+    assert_equal ".0...0...0...0...0..", write.line_three
+  end
+
+  def test_it_can_use_mixed_case_letters
+    write = NightWriter.new("AbCdE")
+    write.convert
+
+    assert_equal "..0.0...0000..0.", write.line_one
+    assert_equal "....0......0...0", write.line_two
+    assert_equal ".0.....0.....0..", write.line_three
+  end
+
+  def test_it_can_use_punctuation_symbols
+    write = NightWriter.new("!',-.?")
+    write.convert
+
+    assert_equal "............", write.line_one
+    assert_equal "00..0...000.", write.line_two
+    assert_equal "0..0..00.000", write.line_three
+  end
+
+  def test_it_can_mix_upcase_downcase_and_punctuation_symbols
+    write = NightWriter.new("!a'B,c-D.")
+    write.convert
+
+    assert_equal "..0.....0...00....00..", write.line_one
+    assert_equal "00......0.0........000", write.line_two
+    assert_equal "0....0.0......00.0...0", write.line_three
   end
 
 end
