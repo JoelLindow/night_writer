@@ -12,10 +12,7 @@ class Translate
   end
 
   def convert
-      line_one
-      line_two
-      line_three
-      write_text_to_file
+      line_one; line_two; line_three; write_text_to_file
   end
 
   def read_file
