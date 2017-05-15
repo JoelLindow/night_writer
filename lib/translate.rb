@@ -12,7 +12,10 @@ class Translate
   end
 
   def convert
-      line_one; line_two; line_three; write_text_to_file
+      line_one
+      line_two
+      line_three
+      write_text_to_file
   end
 
   def read_file
@@ -30,32 +33,26 @@ class Translate
   end
 
   def line_one
-    line_one = ""
-    braille_code.map do |braille_letter|
-      line_one << braille_letter[0]
+    braille_code.reduce("") do |result, braille_letter|
+        result << braille_letter[0]
     end
-    line_one
   end
 
   def line_two
-    line_two = ""
-    braille_code.map do |braille_letter|
-      line_two << braille_letter[1]
+    braille_code.reduce("") do |result, braille_letter|
+        result << braille_letter[1]
     end
-    line_two
   end
 
   def line_three
-    line_three = ""
-    braille_code.map do |braille_letter|
-      line_three << braille_letter[2]
+    braille_code.reduce("") do |result, braille_letter|
+        result << braille_letter[2]
     end
-    line_three
   end
 
 
   def write_text_to_file
-    for_file = line_one + "\n" + line_two + "\n" + line_three + "\n"
+    line_one + "\n" + line_two + "\n" + line_three
     # dummy_output = "DUMMY TEXT MAGIC"
     # File.open('braille.txt', 'w+') { |file| file.write(line_one + "\n") }
     # File.open('text_out', 'w+') { |file| file.write(line_one) }
