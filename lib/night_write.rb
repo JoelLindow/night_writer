@@ -1,7 +1,9 @@
 require './lib/translate'
 
-magic = Translate.new(File.read(ARGV[0]).chomp)
+to_braille = Translate.new(File.read(ARGV[0]).chomp)
 
-magic.convert
+to_braille.convert
 
-File.open(ARGV[1], 'w+') { |file| file.write(magic.write_text_to_file) }
+File.open(ARGV[1], 'w+') do |file|
+  file.write(to_braille.write_text_to_file)
+end
