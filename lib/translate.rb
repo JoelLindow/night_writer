@@ -16,7 +16,7 @@ class Translate
   end
 
   def read_file
-    #this is just topass tests.
+    #this is just to pass INTERNAL test at bottom of translate.rb.
     File.read(ARGV[0]).chomp
   end
 
@@ -55,7 +55,7 @@ class Translate
 
 
   def write_text_to_file
-    for_file = line_one + "\n" + line_two + "\n" + line_three
+    for_file = line_one + "\n" + line_two + "\n" + line_three + "\n"
     # dummy_output = "DUMMY TEXT MAGIC"
     # File.open('braille.txt', 'w+') { |file| file.write(line_one + "\n") }
     # File.open('text_out', 'w+') { |file| file.write(line_one) }
