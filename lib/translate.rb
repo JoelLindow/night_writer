@@ -19,7 +19,7 @@ class Translate
   end
 
   def read_file
-    #this is just topass tests.
+    #this is just to pass INTERNAL test at bottom of translate.rb.
     File.read(ARGV[0]).chomp
   end
 
