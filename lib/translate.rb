@@ -29,7 +29,7 @@ class Translate
     text_in.chars.each do |letter|
       converted_to_braille_string << braille_key.braille[letter]
     end
-    converted_to_braille_string
+    converted_to_braille_s  tring
   end
 
   def line_one
