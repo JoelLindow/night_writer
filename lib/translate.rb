@@ -17,7 +17,7 @@ class Translate
 
   def read_file
     #this is just topass tests.
-    f = File.read(ARGV[0]).chomp
+    File.read(ARGV[0]).chomp
   end
 
   def translate_to_braille_code
