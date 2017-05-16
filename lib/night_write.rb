@@ -11,4 +11,5 @@ to_braille.convert
 file_out = ARGV[1]
 
 output = File.open(file_out, 'w+')
-output.write(to_braille.write_text_to_file)
+
+output.write(to_braille.eighty_characters_wide)

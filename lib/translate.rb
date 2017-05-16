@@ -5,22 +5,14 @@ class Translate
   attr_reader :text_in, :braille_code
   attr_accessor :text_out
 
-  def initialize(text_in = read_file)
+  def initialize(text_in)
     @text_in = text_in
     @braille_code = translate_to_braille_code
-    @text_out = nil
+    @text_out = []
   end
 
   def convert
-      line_one
-      line_two
-      line_three
-      write_text_to_file
-  end
 
-  def read_file
-    #this is just to pass INTERNAL test at bottom of translate.rb.
-    File.read(ARGV[0]).chomp
   end
 
   def translate_to_braille_code
@@ -50,19 +42,23 @@ class Translate
     end
   end
 
+  # def convert_lines
+  #   line_one
+  #   line_two
+  #   line_three
+  # end
 
-  def write_text_to_file
-    line_one + "\n" + line_two + "\n" + line_three
-    # dummy_output = "DUMMY TEXT MAGIC"
-    # File.open('braille.txt', 'w+') { |file| file.write(line_one + "\n") }
-    # File.open('text_out', 'w+') { |file| file.write(line_one) }
+  def eighty_characters_wide
+    one = line_one
+    two = line_two
+    three = line_three
+    # binding.pry
+    if one.length > 0
+      @text_out << one.slice!(0..79) + "\n"
+      @text_out << two.slice!(0..79) + "\n"
+      @text_out << three.slice!(0..79) + "\n"
+    end
+    @text_out.join
   end
 
 end
-
-# file = File.read(ARGV[0]).chomp
-# nw = Translate.new(file)
-# nw.convert
-# p nw.line_one
-# p nw.line_two
-# p nw.line_three
