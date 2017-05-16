@@ -73,4 +73,8 @@ class TranslateTest < Minitest::Test
     assert_equal "0....0.0......00.0...0", write.line_three
   end
 
+  def test_will_it_stop_eighty_characters
+    
+  end
+
 end
