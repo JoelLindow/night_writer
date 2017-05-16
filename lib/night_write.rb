@@ -11,3 +11,7 @@ file_out = ARGV[1]
 output = File.open(file_out, 'w+')
 
 output.write(to_braille.eighty_characters_wide)
+
+message = "Created '#{ARGV[1]}' containing #{to_braille.text_in.length} characters"
+
+puts message
