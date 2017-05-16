@@ -50,6 +50,7 @@ class Translate
     @text_out.join
   end
 
+
 end
 
 # stuff = Translate.new("1234567890ABCDEFGHIJ")
