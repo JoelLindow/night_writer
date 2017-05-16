@@ -30,7 +30,6 @@ class TranslateTest < Minitest::Test
 
   def test_it_can_break_braile_into_three_lines
     write = Translate.new("abcde")
-    write.convert
 
     assert_equal "0.0.00000.", write.line_one
     assert_equal "..0....0.0", write.line_two
@@ -39,7 +38,6 @@ class TranslateTest < Minitest::Test
 
   def test_it_can_use_capital_letters
     write = Translate.new("ABCDE")
-    write.convert
 
     assert_equal "..0...0...00..00..0.", write.line_one
     assert_equal "......0........0...0", write.line_two
@@ -48,7 +46,6 @@ class TranslateTest < Minitest::Test
 
   def test_it_can_use_mixed_case_letters
     write = Translate.new("AbCdE")
-    write.convert
 
     assert_equal "..0.0...0000..0.", write.line_one
     assert_equal "....0......0...0", write.line_two
@@ -57,7 +54,6 @@ class TranslateTest < Minitest::Test
 
   def test_it_can_use_punctuation_symbols
     write = Translate.new("!',-.?")
-    write.convert
 
     assert_equal "............", write.line_one
     assert_equal "00..0...000.", write.line_two
@@ -66,15 +62,18 @@ class TranslateTest < Minitest::Test
 
   def test_it_can_mix_upcase_downcase_and_punctuation_symbols
     write = Translate.new("!a'B,c-D.")
-    write.convert
 
     assert_equal "..0.....0...00....00..", write.line_one
     assert_equal "00......0.0........000", write.line_two
     assert_equal "0....0.0......00.0...0", write.line_three
   end
 
-  def test_will_it_stop_eighty_characters
-    
+  def test_it_knows_to_return_after_80_characters_of_line_braille_plus_line_return_call
+    write = Translate.new("1234567890ABCDEFGHIJ1234567890ABCDEFGHIJ1234567890ABCDEFGHIJ")
+    write.translate_to_braille_code
+    write.eighty_characters_wide
+
+    assert_equal 81, write.text_out[0].length
   end
 
 end
