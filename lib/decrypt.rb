@@ -3,7 +3,7 @@ require 'pry'
 class Decrypt
 attr_reader :braille_in, :line_one, :line_two, :line_three, :compiled_braille_characters
 
-  def initialize(braille_in = file_in)
+  def initialize(braille_in)
     @braille_in = braille_in
     @line_one = ""
     @line_two = ""
@@ -16,10 +16,6 @@ attr_reader :braille_in, :line_one, :line_two, :line_three, :compiled_braille_ch
     key.braille.invert
   end
 
-  def file_in
-    File.read('./test/braille_test_string_one.txt').chomp
-  end
-
   def braille_to_letters
     compiled_braille_characters.map do |character|
       braille_decode_key[character]
@@ -29,17 +25,25 @@ attr_reader :braille_in, :line_one, :line_two, :line_three, :compiled_braille_ch
   def make_braille_code
     break_out_3_lines
     until line_one.length == 0
-    if (line_one[0..1] == "..") && (line_two[0..1] == "..") && (line_three[0..1] == ".0") ||
-        (line_one[0..1] == ".0") && (line_two[0..1] == ".0") && (line_three[0..1] == "00")
-      character = []
-      character << @line_one.slice!(0..3) 
-      character << @line_two.slice!(0..3)
-      character << @line_three.slice!(0..3)
-      @compiled_braille_characters << character
+    if condition_for_four_line
+      make_upper_case_letters
     else
       make_lower_case_letters
     end
     end
+  end
+
+  def condition_for_four_line
+    line_one[0..1] == ".." && line_two[0..1] == ".." && line_three[0..1] == ".0" ||
+    line_one[0..1] == ".0" && line_two[0..1] == ".0" && line_three[0..1] == "00"
+  end
+
+  def make_upper_case_letters
+    character = []
+    character << @line_one.slice!(0..3)
+    character << @line_two.slice!(0..3)
+    character << @line_three.slice!(0..3)
+    @compiled_braille_characters << character
   end
 
   def make_lower_case_letters
@@ -49,6 +53,7 @@ attr_reader :braille_in, :line_one, :line_two, :line_three, :compiled_braille_ch
     character << @line_three.slice!(0..1)
     @compiled_braille_characters << character
   end
+
 
   def break_out_3_lines
     until braille_in.length == 0
@@ -72,15 +77,17 @@ attr_reader :braille_in, :line_one, :line_two, :line_three, :compiled_braille_ch
 
   def break_out_less_than_eighty
     remainder = (braille_in.length / 3)
-    # kill_returns = ""
     @line_one << braille_in.slice!(0..remainder)
-      # kill_returns =
       @line_one.slice!(-1)
     @line_two << braille_in.slice!(0..remainder)
-      # kill_returns =
       @line_two.slice!(-1)
     @line_three << braille_in.slice!(0..remainder)
   end
+
+  def letter_collection_to_text
+    braille_to_letters.join
+  end
+
 end
 
 # welcome = File.read('./test/braille_test_string_two.txt').chomp
