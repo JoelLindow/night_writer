@@ -53,6 +53,6 @@ class Translate
 
 end
 
-# stuff = Translate.new("1234567890ABCDEFGHIJ")
-# binding.pry
-# ""
+stuff = Translate.new("1234567890ABCDEFGHIJ")
+binding.pry
+""
