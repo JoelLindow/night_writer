@@ -27,4 +27,22 @@ class DecryptTest < Minitest::Test
     assert_equal ".0..0...0.0...", read.line_three
   end
 
+  def test_it_can_create_braille_keys
+    welcome = File.read('./test/braille_test_string_one.txt').chomp
+    read = Decrypt.new(welcome)
+    read.make_braille_code
+
+    assert_equal [
+                  [".0", "00", ".0"],
+                  ["0.", ".0", ".."],
+                  ["0.", "0.", "0."],
+                  ["00", "..", ".."],
+                  ["0.", ".0", "0."],
+                  ["00", "..", "0."],
+                  ["0.", ".0", ".."]], read.compiled_braille_characters
+  end
+
+  
+
+
 end
