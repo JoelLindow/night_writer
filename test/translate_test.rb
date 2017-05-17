@@ -57,7 +57,7 @@ class TranslateTest < Minitest::Test
 
     assert_equal "............", write.line_one
     assert_equal "00..0...000.", write.line_two
-    assert_equal "0..0..00.000", write.line_three
+    assert_equal "0.0...00.000", write.line_three
   end
 
   def test_it_can_mix_upcase_downcase_and_punctuation_symbols
@@ -65,7 +65,7 @@ class TranslateTest < Minitest::Test
 
     assert_equal "..0.....0...00....00..", write.line_one
     assert_equal "00......0.0........000", write.line_two
-    assert_equal "0....0.0......00.0...0", write.line_three
+    assert_equal "0...0..0......00.0...0", write.line_three
   end
 
   def test_it_knows_to_return_after_80_characters_of_line_braille_plus_line_return_call
