@@ -5,7 +5,6 @@ attr_reader :braille_in, :line_one, :line_two, :line_three, :compiled_braille_ch
 
   def initialize(braille_in = file_in)
     @braille_in = braille_in
-    @library = braille_decode_key
     @line_one = ""
     @line_two = ""
     @line_three = ""
@@ -21,12 +20,19 @@ attr_reader :braille_in, :line_one, :line_two, :line_three, :compiled_braille_ch
     File.read('./test/braille_test_string_one.txt').chomp
   end
 
+  def braille_to_letters
+    compiled_braille_characters.map do |character|
+      braille_decode_key[character]
+    end
+  end
+
   def make_braille_code
     break_out_3_lines
     until line_one.length == 0
-    if (line_one[0..1] == "..") && (line_two[0..1] == "..") && (line_three[0..1] == ".o")
+    if (line_one[0..1] == "..") && (line_two[0..1] == "..") && (line_three[0..1] == ".0") ||
+        (line_one[0..1] == ".0") && (line_two[0..1] == ".0") && (line_three[0..1] == "00")
       character = []
-      character << @line_one.slice!(0..3)  #<----- BROKEN!!!!!! TEST NEW FILE WITH UPPERCASE ONLY!
+      character << @line_one.slice!(0..3) 
       character << @line_two.slice!(0..3)
       character << @line_three.slice!(0..3)
       @compiled_braille_characters << character
@@ -77,8 +83,11 @@ attr_reader :braille_in, :line_one, :line_two, :line_three, :compiled_braille_ch
   end
 end
 
-welcome = File.read('./test/braille_test_string_two.txt').chomp
-de = Decrypt.new
-de.make_braille_code
-binding.pry
-""
+# welcome = File.read('./test/braille_test_string_two.txt').chomp
+# de = Decrypt.new
+
+# welcome = File.read('./test/braille_test_string_three.txt').chomp
+# de = Decrypt.new(welcome)
+# de.make_braille_code
+# binding.pry
+# ""
