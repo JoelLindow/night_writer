@@ -89,7 +89,9 @@ attr_reader :braille_in,
   def break_out_less_than_eighty
     remainder = ((braille_in.length - 1) / 3)
     @line_one << braille_in.slice!(0..remainder)
+    kill_returns = @line_one.slice!(-1)
     @line_two << braille_in.slice!(0..remainder)
+    kill_returns = @line_two.slice!(-1)
     @line_three << braille_in.slice!(0..remainder)
   end
 end
