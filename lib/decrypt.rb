@@ -24,22 +24,25 @@ attr_reader :braille_in, :line_one, :line_two, :line_three, :compiled_braille_ch
   def make_braille_code
     break_out_3_lines
     until line_one.length == 0
-    if @line_one[0..1] == ".." && @line_two[0..1] == ".." && @line_three[0..1] == ".o"
+    if (line_one[0..1] == "..") && (line_two[0..1] == "..") && (line_three[0..1] == ".o")
       character = []
-      character << @line_one.slice!(0..3)
+      character << @line_one.slice!(0..3)  #<----- BROKEN!!!!!! TEST NEW FILE WITH UPPERCASE ONLY!
       character << @line_two.slice!(0..3)
       character << @line_three.slice!(0..3)
       @compiled_braille_characters << character
     else
-      character = []
-      character << @line_one.slice!(0..1)
-      character << @line_two.slice!(0..1)
-      character << @line_three.slice!(0..1)
-      @compiled_braille_characters << character
+      make_lower_case_letters
     end
     end
   end
 
+  def make_lower_case_letters
+    character = []
+    character << @line_one.slice!(0..1)
+    character << @line_two.slice!(0..1)
+    character << @line_three.slice!(0..1)
+    @compiled_braille_characters << character
+  end
 
   def break_out_3_lines
     until braille_in.length == 0
@@ -73,9 +76,9 @@ attr_reader :braille_in, :line_one, :line_two, :line_three, :compiled_braille_ch
     @line_three << braille_in.slice!(0..remainder)
   end
 end
-#
-# welcome = File.read('./test/braille_test_string_one.txt').chomp
-# de = Decrypt.new
-# de.break_out_3_lines
-# binding.pry
-# ""
+
+welcome = File.read('./test/braille_test_string_two.txt').chomp
+de = Decrypt.new
+de.make_braille_code
+binding.pry
+""
