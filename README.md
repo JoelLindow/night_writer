@@ -48,5 +48,8 @@ Project spec states that the first character is a "space" and that the quotation
 00
 ```
 
-## THANKS FOR CHECKING OUT OR PROJECT! CLONE DOWN AND ENJOY!
+### THANKS FOR CHECKING OUT OR PROJECT! CLONE DOWN AND ENJOY!
 Please execute all code from the project root directory.
+
+#### Joel Lindow & Nate Giesing
+Turing School Back End Software Development Students
