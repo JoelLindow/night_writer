@@ -41,7 +41,7 @@ Project spec states that the first character is a "space" and that the quotation
 .0
 ```
 
-* Numeral Indicator (suggests that following braille character is a number)
+* (Optional Extension) Numeral Indicator (suggests that following braille character is a number)
 ```
 .0
 .0
