@@ -1,5 +1,4 @@
 require './lib/braille_library'
-require 'pry'
 
 class Translate
   attr_reader   :text_in,

@@ -1,5 +1,5 @@
 require './lib/braille_library'
-require 'pry'
+
 class Decrypt
 attr_reader :braille_in,
             :line_one,

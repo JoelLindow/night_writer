@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/translate'
-require 'pry'
 
 class TranslateTest < Minitest::Test
 
